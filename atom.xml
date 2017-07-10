@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>小白的boom</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-07-10T05:46:20.476Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Call me Bay Sir</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用hexo的过程中遇到的一些问题</title>
+    <link href="http://yoursite.com/2017/07/10/%E4%BD%BF%E7%94%A8hexo%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2017/07/10/使用hexo的过程中遇到的一些问题/</id>
+    <published>2017-07-10T03:20:36.000Z</published>
+    <updated>2017-07-10T05:46:20.476Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1、hexo的端口问题&quot;&gt;&lt;a href=&quot;#1、hexo的端口问题&quot; class=&quot;headerlink&quot; title=&quot;1、hexo的端口问题&quot;&gt;&lt;/a&gt;1、hexo的端口问题&lt;/h1&gt;&lt;h2 id=&quot;找到端口占用&quot;&gt;&lt;a href=&quot;#找到端口占用&quot; class=&quot;headerlink&quot; title=&quot;找到端口占用&quot;&gt;&lt;/a&gt;找到端口占用&lt;/h2&gt;&lt;p&gt;之前在电脑上装好hexo之后很顺利的运行：&lt;code&gt;hexo server&lt;/code&gt;,看到自己的博客页面也是很激动的，但是过了几天之后重新启动，发现访问不了页面了，真是哔了狗了。然后就上网查了一下说是端口问题。ok，既然知道问题了就找解决方法了。首先看一下hexo的默认端口到底是谁在用的。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建个人博客的心得</title>
+    <link href="http://yoursite.com/2017/07/08/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BF%83%E5%BE%97/"/>
+    <id>http://yoursite.com/2017/07/08/搭建个人博客的心得/</id>
+    <published>2017-07-08T08:20:04.000Z</published>
+    <updated>2017-07-10T05:46:40.410Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;搭建这个博客是想记录一下自己的工作和生活中的成长，希望自己养成记录的习惯，之前搭建过一个博客，不过由于换了电脑之后工作电脑上gitlab和github的配置总是出现问题，最终选择博客使用的是http方式。这里先记录一下解决方法：&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="生活随笔" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2017/06/21/hello-world/"/>
+    <id>http://yoursite.com/2017/06/21/hello-world/</id>
+    <published>2017-06-21T08:09:33.756Z</published>
+    <updated>2017-07-10T05:36:38.035Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

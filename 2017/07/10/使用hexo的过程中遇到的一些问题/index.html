@@ -83,10 +83,12 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="小白的boom" type="application/atom+xml" />
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
 
 
 
@@ -100,7 +102,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/10/使用hexo的过程中遇到的一些问题/index.html">
 <meta property="og:site_name" content="小白的boom">
 <meta property="og:description" content="1、hexo的端口问题找到端口占用之前在电脑上装好hexo之后很顺利的运行：hexo server,看到自己的博客页面也是很激动的，但是过了几天之后重新启动，发现访问不了页面了，真是哔了狗了。然后就上网查了一下说是端口问题。ok，既然知道问题了就找解决方法了。首先看一下hexo的默认端口到底是谁在用的。">
-<meta property="og:updated_time" content="2017-07-10T03:47:57.760Z">
+<meta property="og:updated_time" content="2017-07-10T05:46:20.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo的过程中遇到的一些问题">
 <meta name="twitter:description" content="1、hexo的端口问题找到端口占用之前在电脑上装好hexo之后很顺利的运行：hexo server,看到自己的博客页面也是很激动的，但是过了几天之后重新启动，发现访问不了页面了，真是哔了狗了。然后就上网查了一下说是端口问题。ok，既然知道问题了就找解决方法了。首先看一下hexo的默认端口到底是谁在用的。">
@@ -294,7 +296,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-hexo " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/使用hexo的过程中遇到的一些问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -372,11 +374,11 @@
       
         <h1 id="1、hexo的端口问题"><a href="#1、hexo的端口问题" class="headerlink" title="1、hexo的端口问题"></a>1、hexo的端口问题</h1><h2 id="找到端口占用"><a href="#找到端口占用" class="headerlink" title="找到端口占用"></a>找到端口占用</h2><p>之前在电脑上装好hexo之后很顺利的运行：<code>hexo server</code>,看到自己的博客页面也是很激动的，但是过了几天之后重新启动，发现访问不了页面了，真是哔了狗了。然后就上网查了一下说是端口问题。ok，既然知道问题了就找解决方法了。首先看一下hexo的默认端口到底是谁在用的。<br><a id="more"></a><br>打开windows命令行工具：cmd,然后输入指令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -ano | findstr <span class="string">"4000"</span></div></pre></td></tr></table></figure></p>
 <p>查看一下电脑当前使用4000端口的PID，然后根据PID找到任务管理器中的服务，发现占用端口的是：<code>Foxit service</code>,WTF，原来是前几天安装的福昕阅读器，这玩意还占我端口。接下来就解决问题。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="1、修改hexo的默认端口"><a href="#1、修改hexo的默认端口" class="headerlink" title="1、修改hexo的默认端口"></a>1、修改hexo的默认端口</h3><p>找到根目录下的<code>_config.yml</code>文件，在任意位置添加以下代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">server:</div><div class="line">  port: 4000</div><div class="line">  compress: <span class="literal">true</span></div><div class="line">  header: <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="修改hexo的默认端口"><a href="#修改hexo的默认端口" class="headerlink" title="修改hexo的默认端口"></a>修改hexo的默认端口</h3><p>找到根目录下的<code>_config.yml</code>文件，在任意位置添加以下代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">server:</div><div class="line">  port: 4000</div><div class="line">  compress: <span class="literal">true</span></div><div class="line">  header: <span class="literal">true</span></div></pre></td></tr></table></figure></p>
 <p>把port：4000修改成你认为安全的端口就行，推荐使用。</p>
-<h3 id="2、指令指定端口启动"><a href="#2、指令指定端口启动" class="headerlink" title="2、指令指定端口启动"></a>2、指令指定端口启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s -p 4444</div></pre></td></tr></table></figure>
+<h3 id="指令指定端口启动"><a href="#指令指定端口启动" class="headerlink" title="指令指定端口启动"></a>指令指定端口启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s -p 4444</div></pre></td></tr></table></figure>
 <p>这个方法可以指定端口启动，但是需要每次都指定端口启动，这个方法比较麻烦，每次都要指定端口</p>
-<h3 id="3、禁用Foxit-service"><a href="#3、禁用Foxit-service" class="headerlink" title="3、禁用Foxit service"></a>3、禁用Foxit service</h3><p>右键打开计算机管理–&gt;服务和应用程序–&gt;服务，然后找到Foxit service，禁用，完美！</p>
+<h3 id="禁用Foxit-service"><a href="#禁用Foxit-service" class="headerlink" title="禁用Foxit service"></a>禁用Foxit service</h3><p>右键打开计算机管理–&gt;服务和应用程序–&gt;服务，然后找到Foxit service，禁用，完美！</p>
 
       
     </div>
@@ -544,6 +546,13 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
           
@@ -590,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、hexo的端口问题"><span class="nav-number">1.</span> <span class="nav-text">1、hexo的端口问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#找到端口占用"><span class="nav-number">1.1.</span> <span class="nav-text">找到端口占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">1.2.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、修改hexo的默认端口"><span class="nav-number">1.2.1.</span> <span class="nav-text">1、修改hexo的默认端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、指令指定端口启动"><span class="nav-number">1.2.2.</span> <span class="nav-text">2、指令指定端口启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、禁用Foxit-service"><span class="nav-number">1.2.3.</span> <span class="nav-text">3、禁用Foxit service</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、hexo的端口问题"><span class="nav-number">1.</span> <span class="nav-text">1、hexo的端口问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#找到端口占用"><span class="nav-number">1.1.</span> <span class="nav-text">找到端口占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">1.2.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改hexo的默认端口"><span class="nav-number">1.2.1.</span> <span class="nav-text">修改hexo的默认端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令指定端口启动"><span class="nav-number">1.2.2.</span> <span class="nav-text">指令指定端口启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁用Foxit-service"><span class="nav-number">1.2.3.</span> <span class="nav-text">禁用Foxit service</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

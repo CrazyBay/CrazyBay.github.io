@@ -1,1 +1,1 @@
-https://crazybay.github.io/2017/07/10/使用hexo的过程中遇到的一些问题/
+https://crazybay.github.io/2017/07/11/关于this的绑定规则/

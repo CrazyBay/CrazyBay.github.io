@@ -99,10 +99,10 @@
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用hexo的过程中遇到的一些问题">
-<meta property="og:url" content="http://yoursite.com/2017/07/10/使用hexo的过程中遇到的一些问题/index.html">
+<meta property="og:url" content="https://crazybay.github.io/2017/07/10/使用hexo的过程中遇到的一些问题/index.html">
 <meta property="og:site_name" content="小白的boom">
 <meta property="og:description" content="hexo的端口问题找到端口占用之前在电脑上装好hexo之后很顺利的运行：hexo server,看到自己的博客页面也是很激动的，但是过了几天之后重新启动，发现访问不了页面了，真是哔了狗了。然后就上网查了一下说是端口问题。ok，既然知道问题了就找解决方法了。首先看一下hexo的默认端口到底是谁在用的。">
-<meta property="og:updated_time" content="2017-07-10T06:10:02.806Z">
+<meta property="og:updated_time" content="2017-07-11T01:52:07.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo的过程中遇到的一些问题">
 <meta name="twitter:description" content="hexo的端口问题找到端口占用之前在电脑上装好hexo之后很顺利的运行：hexo server,看到自己的博客页面也是很激动的，但是过了几天之后重新启动，发现访问不了页面了，真是哔了狗了。然后就上网查了一下说是端口问题。ok，既然知道问题了就找解决方法了。首先看一下hexo的默认端口到底是谁在用的。">
@@ -133,7 +133,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/10/使用hexo的过程中遇到的一些问题/"/>
+  <link rel="canonical" href="https://crazybay.github.io/2017/07/10/使用hexo的过程中遇到的一些问题/"/>
 
 
 
@@ -297,7 +297,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/使用hexo的过程中遇到的一些问题/">
+    <link itemprop="mainEntityOfPage" href="https://crazybay.github.io/2017/07/10/使用hexo的过程中遇到的一些问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Call me Bay Sir">
@@ -416,7 +416,7 @@
 <p>插件安装好之后去修改根目录下的<code>_config.yml</code>文件，找到以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div></pre></td></tr></table></figure></p>
 <p>然后在下面加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Plugins:</div><div class="line">- hexo-generator-feed</div><div class="line">feed:</div><div class="line">  type: atom</div><div class="line">  path: atom.xml</div><div class="line">  limit: 20</div><div class="line">  hub:</div><div class="line">  content:</div></pre></td></tr></table></figure></p>
 <p>最后在在主体配置文件<code>_config.yml</code>中的<code>rss:</code>处加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rss: /atom.xml</div></pre></td></tr></table></figure></p>
-<p>重新<code>hexo g &amp;&amp; hexo server</code>,就能看到首页加入了RSS源了。</p>
+<p>重新<code>hexo g &amp;&amp; hexo server</code>,就能看到首页加入了RSS源了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -484,6 +484,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/11/关于this的绑定规则/" rel="prev" title="关于this的绑定规则">
+                关于this的绑定规则 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -589,7 +593,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -600,7 +604,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -611,7 +615,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -850,7 +854,7 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/07/10/使用hexo的过程中遇到的一些问题/';
+          this.page.url = 'https://crazybay.github.io/2017/07/10/使用hexo的过程中遇到的一些问题/';
           this.page.identifier = '2017/07/10/使用hexo的过程中遇到的一些问题/';
           this.page.title = '使用hexo的过程中遇到的一些问题';
         };

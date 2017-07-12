@@ -95,17 +95,17 @@
 
 
 
-<meta name="description" content="被js的this搞的晕头转向的，看文章也不是很明白，还是看书好啊！得多读书。你不知道的javascript">
+<meta name="description" content="被js的 this 搞的晕头转向的，看文章也不是很明白，还是看书好啊！得多读书。本文内容主要源自：你不知道的javascript">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于this的绑定规则">
 <meta property="og:url" content="https://crazybay.github.io/2017/07/11/关于this的绑定规则/index.html">
 <meta property="og:site_name" content="小白的boom">
-<meta property="og:description" content="被js的this搞的晕头转向的，看文章也不是很明白，还是看书好啊！得多读书。你不知道的javascript">
-<meta property="og:updated_time" content="2017-07-11T10:01:20.979Z">
+<meta property="og:description" content="被js的 this 搞的晕头转向的，看文章也不是很明白，还是看书好啊！得多读书。本文内容主要源自：你不知道的javascript">
+<meta property="og:updated_time" content="2017-07-12T10:04:04.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于this的绑定规则">
-<meta name="twitter:description" content="被js的this搞的晕头转向的，看文章也不是很明白，还是看书好啊！得多读书。你不知道的javascript">
+<meta name="twitter:description" content="被js的 this 搞的晕头转向的，看文章也不是很明白，还是看书好啊！得多读书。本文内容主要源自：你不知道的javascript">
 
 
 
@@ -189,7 +189,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <h1 class="site-subtitle" itemprop="description"></h1>
       
   </div>
 
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于this的绑定规则</h1>
+          <h2 class="post-title" itemprop="name headline">关于this的绑定规则</h2>
         
 
         <div class="post-meta">
@@ -362,17 +362,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/11/关于this的绑定规则/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/11/关于this的绑定规则/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -405,8 +394,35 @@
       
 
       
-        <p>被js的<em>this</em>搞的晕头转向的，看文章也不是很明白，还是看书好啊！得多读书。<br><div class="note info"><p>你不知道的javascript </p>
-</div></p>
+        <p>被js的 <strong>this</strong> 搞的晕头转向的，看文章也不是很明白，还是看书好啊！得多读书。<br>本文内容主要源自：<br><div class="note info"><p>你不知道的javascript </p>
+</div><br><a id="more"></a><br>在讲this的绑定规则之前我们先总结一下this：</p>
+<ul>
+<li>this 既不指向函数自身也不指向函数的词法作用域</li>
+<li>this 实际上是在函数被调用时发生的绑定， 它指向什么完全取决于函数在哪里被调用。</li>
+</ul>
+<p>既然this的绑定取决于在哪被调用，那么首先我们需要先找到this的调用位置，查看函数调用栈的倒数第二个元素，这里就是this的调用位置。找到调用位置之后就需要判断this使用了哪种绑定规则，下面就介绍一下this的四种绑定规则。</p>
+<h1 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h1><p>默认绑定是指在无法应用其他绑定时的默认规则。<br>首先看以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function foo() &#123;</div><div class="line">    console.log( this.a );</div><div class="line">&#125;</div><div class="line">var a = 2;</div><div class="line">foo(); //2</div></pre></td></tr></table></figure></p>
+<p>当<code>foo()</code>函数被调用时，this.a被解析成了全局变量a，这时候应用了this的默认绑定，为什么呢？因为<code>foo()</code> 是直接使用不带任何修饰的函数引用进行调用的， 因此只能使用<br>默认绑定， 无法应用其他规则。<br>但是如果是在严格模式下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function foo() &#123;</div><div class="line">    &apos;use strict&apos;;</div><div class="line">    console.log( this.a );</div><div class="line">&#125;</div><div class="line">var a = 2;</div><div class="line">foo(); // TypeError: this is undefined</div></pre></td></tr></table></figure></p>
+<p>之所以会有typeError，是因为在严格模式下全局对象将无法使用默认绑定， 因此 this 会绑定到 undefined;<br>这里有一个微妙但是非常重要的细节， 虽然 this 的绑定规则完全取决于调用位置， 但是只有 foo() 运行在非严格模式下时（在非严格模式下定义）， 默认绑定才能绑定到全局对象； 跟foo()的调用位置是不是在严格模式下无关：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function foo() &#123;</div><div class="line">    console.log( this.a );</div><div class="line">&#125;</div><div class="line">var a = 2;</div><div class="line">(function()&#123;</div><div class="line">    &quot;use strict&quot;;</div><div class="line">    foo(); // 2</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p><strong>注：不要同时使用严格模式或者非严格模式，要统一代码风格</strong></p>
+<h1 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h1><p>当函数的调用位置有上下文对象的时候会应用隐式绑定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var obj = &#123;</div><div class="line">    a: 2,</div><div class="line">    foo: foo</div><div class="line">&#125;</div><div class="line">obj.foo();//2</div></pre></td></tr></table></figure></p>
+<p>当foo()被调用时，obj成为了foo()的执行上下文对象，于是，隐式绑定规则会把函数调用中的 this 绑定到这个上下文对象。<br><strong>注：对象属性引用链中只有最顶层或者说最后一层会影响调用位置。</strong></p>
+<p>隐式绑定会有隐式丢失的问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function foo() &#123;</div><div class="line">    console.log( this.a );</div><div class="line">&#125;</div><div class="line">var obj = &#123;</div><div class="line">    a: 2,</div><div class="line">    foo: foo</div><div class="line">&#125;;</div><div class="line">var bar = obj.foo; // 函数别名！</div><div class="line">var a = &quot;oops, global&quot;; // a 是全局对象的属性</div><div class="line"></div><div class="line">bar(); // &quot;oops, global&quot;</div></pre></td></tr></table></figure></p>
+<p>bar是obj.foo的一个引用，但实际指向的是foo函数本身，因此bar没有执行上下文，所以启用了默认绑定。</p>
+<h1 id="显式绑定"><a href="#显式绑定" class="headerlink" title="显式绑定"></a>显式绑定</h1><p>显示绑定比较简单，就是我们平时使用的call(…)和apply(…)，这两个函数可以把对象绑定到执行函数的this上，所以称为显式绑定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function foo() &#123;</div><div class="line">    console.log( this.a );</div><div class="line">&#125;</div><div class="line">var obj = &#123;</div><div class="line">a:2</div><div class="line">&#125;;</div><div class="line">foo.call( obj ); // 2</div></pre></td></tr></table></figure></p>
+<p>显式绑定仍然无法解决我们之前提出的丢失绑定问题。</p>
+<h1 id="硬绑定"><a href="#硬绑定" class="headerlink" title="硬绑定"></a>硬绑定</h1><p>硬绑定是显式绑定的一个变种，但是可以解决丢失绑定的问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function foo() &#123;</div><div class="line">    console.log( this.a );</div><div class="line">&#125;</div><div class="line">var obj = &#123;</div><div class="line">a:2</div><div class="line">&#125;;</div><div class="line">var bar = function() &#123;</div><div class="line">    foo.call( obj );</div><div class="line">&#125;;</div><div class="line">bar(); // 2</div><div class="line">setTimeout( bar, 100 ); // 2</div><div class="line">// 硬绑定的 bar 不可能再修改它的 this</div><div class="line">bar.call( window ); // 2</div></pre></td></tr></table></figure></p>
+<p>bar的绑定总是在执行的时候绑定到obj上面，这是一种显式的强制绑定。在ES5中的bind()方法就是一种硬绑定。</p>
+<h1 id="new绑定"><a href="#new绑定" class="headerlink" title="new绑定"></a>new绑定</h1><p>js中的new操作符实际上并不是“构造函数”，而是一种对函数的“构造函数调用”。<br>使用 new 来调用函数， 或者说发生构造函数调用时， 会自动执行下面的操作。</p>
+<ol>
+<li>创建（或者说构造） 一个全新的对象。</li>
+<li>这个新对象会被执行 [[ 原型 ]] 连接。</li>
+<li>这个新对象会绑定到函数调用的 this。</li>
+<li>如果函数没有返回其他对象， 那么 new 表达式中的函数调用会自动返回这个新对象。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function foo(a) &#123;</div><div class="line">    this.a = a;</div><div class="line">&#125;</div><div class="line">var bar = new foo(2);</div><div class="line">console.log( bar.a ); // 2</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>使用 new 来调用 foo(..) 时， 我们会构造一个新对象并把它绑定到 foo(..) 调用中的 this上。 new 是最后一种可以影响函数调用时 this 绑定行为的方法， 我们称之为 new 绑定。</p>
+<h1 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h1><p>new绑定&gt;硬绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定。其中默认绑定在严格模式下会绑定到undefined上，否则绑定到全局对象上</p>
 
       
     </div>
@@ -526,13 +542,6 @@
           
   <div class="comments" id="comments">
     
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
   </div>
 
 
@@ -554,16 +563,25 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/SC04C08.jpg"
                alt="Call me Bay Sir" />
           <p class="site-author-name" itemprop="name">Call me Bay Sir</p>
            
-              <p class="site-description motion-element" itemprop="description">一只爱分享、爱运动、爱旅行的攻城狮。。。</p>
-          
+              <p class="site-description motion-element" itemprop="description"></p>
+           
         </div>
         <nav class="site-state motion-element">
 
@@ -666,6 +684,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#默认绑定"><span class="nav-number">1.</span> <span class="nav-text">默认绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#隐式绑定"><span class="nav-number">2.</span> <span class="nav-text">隐式绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#显式绑定"><span class="nav-number">3.</span> <span class="nav-text">显式绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#硬绑定"><span class="nav-number">4.</span> <span class="nav-text">硬绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#new绑定"><span class="nav-number">5.</span> <span class="nav-text">new绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优先级"><span class="nav-number">6.</span> <span class="nav-text">优先级</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -808,26 +842,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://crazybay.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'https://crazybay.github.io/2017/07/11/关于this的绑定规则/';
-          this.page.identifier = '2017/07/11/关于this的绑定规则/';
-          this.page.title = '关于this的绑定规则';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://crazybay.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -846,6 +860,10 @@
   
 
 
+
+
+
+  
 
 
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://crazybay.github.io/"/>
-  <updated>2017-07-18T05:28:56.105Z</updated>
+  <updated>2017-07-18T05:35:20.655Z</updated>
   <id>https://crazybay.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://crazybay.github.io/2017/07/15/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5%E4%B8%80%E4%B8%AAurl%EF%BC%8C%E6%95%B2%E5%87%BB%E5%9B%9E%E8%BD%A6%E4%B9%8B%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E5%95%A5/"/>
     <id>https://crazybay.github.io/2017/07/15/在浏览器中输入一个url，敲击回车之后发生了啥/</id>
     <published>2017-07-15T10:10:40.000Z</published>
-    <updated>2017-07-18T05:28:56.105Z</updated>
+    <updated>2017-07-18T05:35:20.655Z</updated>
     
     <summary type="html">
     
@@ -97,11 +97,29 @@
   </entry>
   
   <entry>
+    <title>整理一下自己常读的前端领域的官方文档</title>
+    <link href="https://crazybay.github.io/2017/06/18/%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%E8%87%AA%E5%B7%B1%E5%B8%B8%E8%AF%BB%E7%9A%84%E5%89%8D%E7%AB%AF%E9%A2%86%E5%9F%9F%E7%9A%84%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/"/>
+    <id>https://crazybay.github.io/2017/06/18/整理一下自己常读的前端领域的官方文档/</id>
+    <published>2017-06-18T05:38:56.000Z</published>
+    <updated>2017-07-18T05:40:41.433Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="阅读" scheme="https://crazybay.github.io/categories/%E9%98%85%E8%AF%BB/"/>
+    
+    
+      <category term="前端" scheme="https://crazybay.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
-    <link href="https://crazybay.github.io/2017/06/21/hello-world/"/>
-    <id>https://crazybay.github.io/2017/06/21/hello-world/</id>
-    <published>2017-06-21T08:09:33.756Z</published>
-    <updated>2017-07-10T05:36:38.035Z</updated>
+    <link href="https://crazybay.github.io/2017/03/18/hello-world/"/>
+    <id>https://crazybay.github.io/2017/03/18/hello-world/</id>
+    <published>2017-03-18T05:38:56.000Z</published>
+    <updated>2017-07-18T05:40:42.694Z</updated>
     
     <summary type="html">
     

@@ -57,46 +57,6 @@
   </entry>
   
   <entry>
-    <title>使用hexo的过程中遇到的一些问题</title>
-    <link href="https://crazybay.github.io/2017/07/10/%E4%BD%BF%E7%94%A8hexo%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
-    <id>https://crazybay.github.io/2017/07/10/使用hexo的过程中遇到的一些问题/</id>
-    <published>2017-07-10T03:20:36.000Z</published>
-    <updated>2017-07-11T11:06:21.636Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;hexo的端口问题&quot;&gt;&lt;a href=&quot;#hexo的端口问题&quot; class=&quot;headerlink&quot; title=&quot;hexo的端口问题&quot;&gt;&lt;/a&gt;hexo的端口问题&lt;/h1&gt;&lt;h2 id=&quot;找到端口占用&quot;&gt;&lt;a href=&quot;#找到端口占用&quot; class=&quot;headerlink&quot; title=&quot;找到端口占用&quot;&gt;&lt;/a&gt;找到端口占用&lt;/h2&gt;&lt;p&gt;之前在电脑上装好hexo之后很顺利的运行：&lt;code&gt;hexo server&lt;/code&gt;,看到自己的博客页面也是很激动的，但是过了几天之后重新启动，发现访问不了页面了，真是哔了狗了。然后就上网查了一下说是端口问题。ok，既然知道问题了就找解决方法了。首先看一下hexo的默认端口到底是谁在用的。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="hexo" scheme="https://crazybay.github.io/categories/hexo/"/>
-    
-    
-      <category term="学习笔记" scheme="https://crazybay.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建个人博客的心得</title>
-    <link href="https://crazybay.github.io/2017/07/08/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BF%83%E5%BE%97/"/>
-    <id>https://crazybay.github.io/2017/07/08/搭建个人博客的心得/</id>
-    <published>2017-07-08T08:20:04.000Z</published>
-    <updated>2017-07-10T07:51:01.335Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;上学那会，自己不怎么爱记笔记，也没觉得记笔记有啥好的，大学期间更别提了，笔记少之又少，突然意识到自己该记点笔记是从刚工作实习那会开始，技术渣渣就不说了，但是还是要有一颗向上的心，于是实习期间就读书学习，但是学完之后总觉得自己没学多少东西，才感觉到记笔记的重要性了。不过使用云笔记之类的东西吧，自己又不太习惯，所以零零散散的记了一些东西。总得来说，记录不多。搭建这个博客是想记录一下自己的工作和生活中的成长，希望自己养成记录的习惯。&lt;br&gt;之前搭建过一个博客，不过由于换了电脑之后工作电脑上gitlab和github的置总是出现问题，最终选择博客使用的是http方式。这里先记录一下解决方法：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="hexo" scheme="https://crazybay.github.io/categories/hexo/"/>
-    
-    
-      <category term="生活随笔" scheme="https://crazybay.github.io/tags/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
     <title>整理一下自己常读的前端领域的官方文档</title>
     <link href="https://crazybay.github.io/2017/06/23/%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%E8%87%AA%E5%B7%B1%E5%B8%B8%E8%AF%BB%E7%9A%84%E5%89%8D%E7%AB%AF%E9%A2%86%E5%9F%9F%E7%9A%84%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/"/>
     <id>https://crazybay.github.io/2017/06/23/整理一下自己常读的前端领域的官方文档/</id>
@@ -117,11 +77,51 @@
   </entry>
   
   <entry>
+    <title>使用hexo的过程中遇到的一些问题</title>
+    <link href="https://crazybay.github.io/2017/04/15/%E4%BD%BF%E7%94%A8hexo%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
+    <id>https://crazybay.github.io/2017/04/15/使用hexo的过程中遇到的一些问题/</id>
+    <published>2017-04-15T03:20:36.000Z</published>
+    <updated>2017-07-19T06:45:16.091Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;hexo的端口问题&quot;&gt;&lt;a href=&quot;#hexo的端口问题&quot; class=&quot;headerlink&quot; title=&quot;hexo的端口问题&quot;&gt;&lt;/a&gt;hexo的端口问题&lt;/h1&gt;&lt;h2 id=&quot;找到端口占用&quot;&gt;&lt;a href=&quot;#找到端口占用&quot; class=&quot;headerlink&quot; title=&quot;找到端口占用&quot;&gt;&lt;/a&gt;找到端口占用&lt;/h2&gt;&lt;p&gt;之前在电脑上装好hexo之后很顺利的运行：&lt;code&gt;hexo server&lt;/code&gt;,看到自己的博客页面也是很激动的，但是过了几天之后重新启动，发现访问不了页面了，真是哔了狗了。然后就上网查了一下说是端口问题。ok，既然知道问题了就找解决方法了。首先看一下hexo的默认端口到底是谁在用的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://crazybay.github.io/categories/hexo/"/>
+    
+    
+      <category term="学习笔记" scheme="https://crazybay.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建个人博客的心得</title>
+    <link href="https://crazybay.github.io/2017/03/24/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BF%83%E5%BE%97/"/>
+    <id>https://crazybay.github.io/2017/03/24/搭建个人博客的心得/</id>
+    <published>2017-03-24T08:20:04.000Z</published>
+    <updated>2017-07-19T06:44:53.141Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上学那会，自己不怎么爱记笔记，也没觉得记笔记有啥好的，大学期间更别提了，笔记少之又少，突然意识到自己该记点笔记是从刚工作实习那会开始，技术渣渣就不说了，但是还是要有一颗向上的心，于是实习期间就读书学习，但是学完之后总觉得自己没学多少东西，才感觉到记笔记的重要性了。不过使用云笔记之类的东西吧，自己又不太习惯，所以零零散散的记了一些东西。总得来说，记录不多。搭建这个博客是想记录一下自己的工作和生活中的成长，希望自己养成记录的习惯。&lt;br&gt;之前搭建过一个博客，不过由于换了电脑之后工作电脑上gitlab和github的置总是出现问题，最终选择博客使用的是http方式。这里先记录一下解决方法：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://crazybay.github.io/categories/hexo/"/>
+    
+    
+      <category term="生活随笔" scheme="https://crazybay.github.io/tags/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
-    <link href="https://crazybay.github.io/2017/03/23/hello-world/"/>
-    <id>https://crazybay.github.io/2017/03/23/hello-world/</id>
-    <published>2017-03-23T05:38:56.000Z</published>
-    <updated>2017-07-19T06:36:03.194Z</updated>
+    <link href="https://crazybay.github.io/2017/03/18/hello-world/"/>
+    <id>https://crazybay.github.io/2017/03/18/hello-world/</id>
+    <published>2017-03-18T05:38:56.000Z</published>
+    <updated>2017-07-19T06:44:29.497Z</updated>
     
     <summary type="html">
     

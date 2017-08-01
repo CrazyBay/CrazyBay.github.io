@@ -1,1 +1,1 @@
-https://crazybay.github.io/2017/08/01/使用vue-cli工具构建的vue-webpac项目配置详解/
+https://crazybay.github.io/2017/08/01/使用vue-cli工具构建的vue-webpack项目配置详解/

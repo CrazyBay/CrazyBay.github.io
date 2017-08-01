@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://crazybay.github.io/"/>
-  <updated>2017-07-18T05:35:20.655Z</updated>
+  <updated>2017-08-01T11:01:44.425Z</updated>
   <id>https://crazybay.github.io/</id>
   
   <author>
@@ -14,6 +14,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用vue-cli工具构建的vue+webpac项目配置详解</title>
+    <link href="https://crazybay.github.io/2017/08/01/%E4%BD%BF%E7%94%A8vue-cli%E5%B7%A5%E5%85%B7%E6%9E%84%E5%BB%BA%E7%9A%84vue-webpac%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://crazybay.github.io/2017/08/01/使用vue-cli工具构建的vue-webpac项目配置详解/</id>
+    <published>2017-08-01T09:44:25.000Z</published>
+    <updated>2017-08-01T11:01:44.425Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用vue-cli构建的vue+webpack的项目可以说是把一切东西都给搭建好了,简直就是开箱即用.也不用过多的关注其中的配置文件,但是当真要去修改的时候反而又是一知半解的,还要去反复的去查文档,所以最近就通读了webpack的官方文档和vue-cli的文档配置,然后对vue+webpack的配置做了一次比较完整的注释.&lt;/p&gt;
+&lt;h1 id=&quot;使用的版本&quot;&gt;&lt;a href=&quot;#使用的版本&quot; class=&quot;headerlink&quot; title=&quot;使用的版本&quot;&gt;&lt;/a&gt;使用的版本&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="技术文章" scheme="https://crazybay.github.io/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="js" scheme="https://crazybay.github.io/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>在浏览器中输入一个url，敲击回车之后发生了啥</title>
@@ -40,7 +61,7 @@
     <link href="https://crazybay.github.io/2017/07/11/%E5%85%B3%E4%BA%8Ethis%E7%9A%84%E7%BB%91%E5%AE%9A%E8%A7%84%E5%88%99/"/>
     <id>https://crazybay.github.io/2017/07/11/关于this的绑定规则/</id>
     <published>2017-07-11T00:54:31.000Z</published>
-    <updated>2017-07-18T06:56:34.958Z</updated>
+    <updated>2017-08-01T10:12:18.354Z</updated>
     
     <summary type="html">
     
@@ -61,7 +82,7 @@
     <link href="https://crazybay.github.io/2017/05/13/%E6%89%8B%E5%86%99%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%8C%E4%B8%8D%E4%BD%BF%E7%94%A8%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95/"/>
     <id>https://crazybay.github.io/2017/05/13/手写一个字符串转数字的实现，不使用内置方法/</id>
     <published>2017-05-13T10:04:30.000Z</published>
-    <updated>2017-07-31T03:19:02.914Z</updated>
+    <updated>2017-08-01T10:12:28.186Z</updated>
     
     <summary type="html">
     
@@ -81,7 +102,7 @@
     <link href="https://crazybay.github.io/2017/05/01/%E6%95%B0%E7%BB%84%E7%9A%84%E9%81%8D%E5%8E%86%E5%92%8CES6%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84/"/>
     <id>https://crazybay.github.io/2017/05/01/数组的遍历和ES6中的数组/</id>
     <published>2017-05-01T04:58:57.000Z</published>
-    <updated>2017-07-19T09:24:23.482Z</updated>
+    <updated>2017-08-01T10:12:43.961Z</updated>
     
     <summary type="html">
     
@@ -101,7 +122,7 @@
     <link href="https://crazybay.github.io/2017/04/23/%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%E8%87%AA%E5%B7%B1%E5%B8%B8%E8%AF%BB%E7%9A%84%E5%89%8D%E7%AB%AF%E9%A2%86%E5%9F%9F%E7%9A%84%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/"/>
     <id>https://crazybay.github.io/2017/04/23/整理一下自己常读的前端领域的官方文档/</id>
     <published>2017-04-23T05:38:56.000Z</published>
-    <updated>2017-07-19T06:52:34.760Z</updated>
+    <updated>2017-08-01T10:12:48.018Z</updated>
     
     <summary type="html">
     
@@ -121,7 +142,7 @@
     <link href="https://crazybay.github.io/2017/04/15/%E4%BD%BF%E7%94%A8hexo%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
     <id>https://crazybay.github.io/2017/04/15/使用hexo的过程中遇到的一些问题/</id>
     <published>2017-04-15T03:20:36.000Z</published>
-    <updated>2017-07-19T06:45:16.091Z</updated>
+    <updated>2017-08-01T10:11:50.448Z</updated>
     
     <summary type="html">
     

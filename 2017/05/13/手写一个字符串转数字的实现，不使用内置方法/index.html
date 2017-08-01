@@ -102,7 +102,7 @@
 <meta property="og:url" content="https://crazybay.github.io/2017/05/13/手写一个字符串转数字的实现，不使用内置方法/index.html">
 <meta property="og:site_name" content="小白的boom">
 <meta property="og:description" content="把字符串转为数字并且不使用内置方法，这个实现在js里面还是比较好实现的。js是一种弱类型的语言，在基本数据类型的转换上我们可以有很巧妙的实现方式，下面就使用数组中的map函数和reduce函数来实现字符串转数组。">
-<meta property="og:updated_time" content="2017-07-31T03:19:02.914Z">
+<meta property="og:updated_time" content="2017-08-01T10:12:28.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手写一个字符串转数字的实现，不使用内置方法">
 <meta name="twitter:description" content="把字符串转为数字并且不使用内置方法，这个实现在js里面还是比较好实现的。js是一种弱类型的语言，在基本数据类型的转换上我们可以有很巧妙的实现方式，下面就使用数组中的map函数和reduce函数来实现字符串转数组。">
@@ -394,10 +394,10 @@
       
 
       
-        <p>把字符串转为数字并且不使用内置方法，这个实现在js里面还是比较好实现的。js是一种弱类型的语言，在基本数据类型的转换上我们可以有很巧妙的实现方式，下面就使用数组中的map函数和reduce函数来实现字符串转数组。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var str = &quot;12345&quot;;</div><div class="line">//把字符串转换成数组</div><div class="line">var arr = str.split(&quot;&quot;);//[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]</div><div class="line">//把字符串数组转换成数字数组</div><div class="line">var numArr = arr.map(function(value)&#123;</div><div class="line">    return +value;//使用字符串的弱类型转换</div><div class="line">    &#125;);//[1,2,3,4,5]</div><div class="line">//把数组转成数字的字面量</div><div class="line">var num = numArr.reduce(function(pre,cur)&#123;</div><div class="line">    return pre*10 + cur;</div><div class="line">    &#125;);</div><div class="line">console.log(num);//12345</div></pre></td></tr></table></figure></p>
-<p>这里只是拿纯数字字符串做了一次演示，但如果真的是纯数字字符串的话肯定不用这么麻烦啦！<br>直接通过弱类型转换就能搞定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var num = +&quot;12345&quot;;//12345</div></pre></td></tr></table></figure></p>
+        <p>把字符串转为数字并且不使用内置方法，这个实现在js里面还是比较好实现的。js是一种弱类型的语言，在基本数据类型的转换上我们可以有很巧妙的实现方式，下面就使用数组中的map函数和reduce函数来实现字符串转数组。<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"12345"</span>;</div><div class="line"><span class="comment">//把字符串转换成数组</span></div><div class="line"><span class="keyword">var</span> arr = str.split(<span class="string">""</span>);<span class="comment">//["1","2","3","4","5"]</span></div><div class="line"><span class="comment">//把字符串数组转换成数字数组</span></div><div class="line"><span class="keyword">var</span> numArr = arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> +value;<span class="comment">//使用字符串的弱类型转换</span></div><div class="line">    &#125;);<span class="comment">//[1,2,3,4,5]</span></div><div class="line"><span class="comment">//把数组转成数字的字面量</span></div><div class="line"><span class="keyword">var</span> num = numArr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">pre,cur</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> pre*<span class="number">10</span> + cur;</div><div class="line">    &#125;);</div><div class="line"><span class="built_in">console</span>.log(num);<span class="comment">//12345</span></div></pre></td></tr></table></figure></p>
+<p>这里只是拿纯数字字符串做了一次演示，但如果真的是纯数字字符串的话肯定不用这么麻烦啦！<br>直接通过弱类型转换就能搞定<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = +<span class="string">"12345"</span>;<span class="comment">//12345</span></div></pre></td></tr></table></figure></p>
 <p><em>so easy!!!</em><br>如果是一个非纯数字的字符串，只使用上面的map函数就不太合适了。我们需要过滤掉不需要的数据，这个时候数组的filter函数就派上用场了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var filterArr = arr.filter(function(value)&#123;</div><div class="line">    return !isNaN(+value);//过滤非数字的字符串</div><div class="line">    &#125;);</div><div class="line">var num = ......</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> filterArr = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> !<span class="built_in">isNaN</span>(+value);<span class="comment">//过滤非数字的字符串</span></div><div class="line">    &#125;);</div><div class="line"><span class="keyword">var</span> num = ......</div></pre></td></tr></table></figure>
 <p>到这就ok了，刚好也是对之前介绍的数组方法的一个复习。</p>
 
       
@@ -559,7 +559,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

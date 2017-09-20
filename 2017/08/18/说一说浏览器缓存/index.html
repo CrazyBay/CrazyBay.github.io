@@ -1,0 +1,982 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="小白的boom" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="在项目中做资源优化的时候,其中一部分是关于浏览器缓存的内容,所以在网上找了关于这方面的知识去学习并应用,但是看完很多资料不免还是有几点疑惑:浏览器缓存是否由前端控制?if true, 该如何去设置;if false,那浏览器缓存该如何控制;希望接下来的描述可以说明这几个问题.">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="说一说浏览器缓存">
+<meta property="og:url" content="https://crazybay.github.io/2017/08/18/说一说浏览器缓存/index.html">
+<meta property="og:site_name" content="小白的boom">
+<meta property="og:description" content="在项目中做资源优化的时候,其中一部分是关于浏览器缓存的内容,所以在网上找了关于这方面的知识去学习并应用,但是看完很多资料不免还是有几点疑惑:浏览器缓存是否由前端控制?if true, 该如何去设置;if false,那浏览器缓存该如何控制;希望接下来的描述可以说明这几个问题.">
+<meta property="og:updated_time" content="2017-09-20T04:13:27.245Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="说一说浏览器缓存">
+<meta name="twitter:description" content="在项目中做资源优化的时候,其中一部分是关于浏览器缓存的内容,所以在网上找了关于这方面的知识去学习并应用,但是看完很多资料不免还是有几点疑惑:浏览器缓存是否由前端控制?if true, 该如何去设置;if false,那浏览器缓存该如何控制;希望接下来的描述可以说明这几个问题.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://crazybay.github.io/2017/08/18/说一说浏览器缓存/"/>
+
+
+
+
+
+  <title>说一说浏览器缓存 | 小白的boom</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-102275987-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小白的boom</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/baidusitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://crazybay.github.io/2017/08/18/说一说浏览器缓存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Call me Bay Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/SC04C08.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小白的boom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">说一说浏览器缓存</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-18T17:58:08+08:00">
+                2017-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术文章/" itemprop="url" rel="index">
+                    <span itemprop="name">技术文章</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/18/说一说浏览器缓存/" class="leancloud_visitors" data-flag-title="说一说浏览器缓存">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在项目中做资源优化的时候,其中一部分是关于浏览器缓存的内容,所以在网上找了关于这方面的知识去学习并应用,但是看完很多资料不免还是有几点疑惑:浏览器缓存是否由前端控制?if true, 该如何去设置;if false,那浏览器缓存该如何控制;希望接下来的描述可以说明这几个问题.<br><a id="more"></a><br><em>在说明这几个问题之前还是对浏览器缓存的几个属性做一个简单的介绍,关于浏览器缓存的定义和历史就不再赘述了,网上的文章实在是够看的了.</em></p>
+<h1 id="浏览器header中的属性"><a href="#浏览器header中的属性" class="headerlink" title="浏览器header中的属性"></a>浏览器header中的属性</h1><p>浏览器缓存的所有可缓存的资源都应该被缓存.</p>
+<h2 id="Expires和Cache-Control-max-age标头"><a href="#Expires和Cache-Control-max-age标头" class="headerlink" title="Expires和Cache-Control: max-age标头"></a>Expires和Cache-Control: max-age标头</h2><p>这些标头用于指定相应时间段，浏览器可在指定的这段时间内使用已缓存的资源，而无需查看网络服务器是否提供了新版资源。这些缓存标头功能强大，没有任何应用条件限制。在设置这些标头并下载资源后，浏览器不会为资源发出任何GET请求，除非过期日期到期或达到时间最大值，亦或是用户清除了缓存。</p>
+<h2 id="Last-Modifed和ETag标头"><a href="#Last-Modifed和ETag标头" class="headerlink" title="Last-Modifed和ETag标头"></a>Last-Modifed和ETag标头</h2><p>这些标头可用于指定浏览器应如何确定用于缓存的文件是否相同。在Last-Modified标头中指定的是日期，而在ETag标头中指定的则可以是唯一标识资源的任意值（通常为文件版本或内容哈希值）。Last-Modified是功能“较弱”的缓存标头，因为浏览器会使用试探法来确定是否需要从缓存中抓取内容。</p>
+<p>借助这些标头，浏览器可以通过在用户明确重新加载页面时发出条件式GET请求，有效地更新其已缓存资源。除非您在服务器端更改资源，否则条件式GET请求不会返回完整的响应，因此相较于完整GET请求，此类请求的延迟较小。</p>
+<p><strong>通常情况下我们对所有可缓存的资源都应设置缓存标头,指定一个Expires或Cache-Control: max-age以及一个Last-Modifed和ETag,但是没必要同时指定Expires和Cache-Control: max-age；或同时指定Last-Modified和ETag.如果这么做了,那么就会同时检查符合之后服务器才会返回304.</strong></p>
+<p>介绍完这些之后,就可以开始回答上面几个问题了.</p>
+<h1 id="浏览器缓存是否由前端控制"><a href="#浏览器缓存是否由前端控制" class="headerlink" title="浏览器缓存是否由前端控制?"></a>浏览器缓存是否由前端控制?</h1><p>这个问题的答案是浏览器缓存不能由js或者页面去设置,但是需要前端的服务器来配置,比如:apache,nginx等web服务器,恰好我们公司用的是tomcat服务器,让我又一顿好找,同时也理清了web服务器和应用服务器的概念,其中apache,nginx之类的是web服务器,tomcat并不是web服务器,它只是一个java servlet的容器.</p>
+<h1 id="该如何去控制浏览器缓存"><a href="#该如何去控制浏览器缓存" class="headerlink" title="该如何去控制浏览器缓存"></a>该如何去控制浏览器缓存</h1><p>虽然前端控制不了缓存,但是我们还是需要去配置服务器以达到我们的目的.就说一下apache,nginx和tomcat的三种配置.</p>
+<h2 id="apache配置浏览器缓存"><a href="#apache配置浏览器缓存" class="headerlink" title="apache配置浏览器缓存"></a>apache配置浏览器缓存</h2><p>###Apache Module mod_expires<br>使用Apache的mod_expires 模块来设置，这包括控制应答时的Expires头内容和Cache-Control头的max-age指令<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">ExpiresActive On</div><div class="line">ExpiresByType image/gif "access plus 1 month"</div><div class="line">ExpiresByType image/jpg "access plus 1 month"</div><div class="line">ExpiresByType image/jpeg "access plus 1 month"</div><div class="line">ExpiresByType image/x-icon "access plus 1 month"</div><div class="line">ExpiresByType image/bmp "access plus 1 month"</div><div class="line">ExpiresByType image/png "access plus 1 month"</div><div class="line">ExpiresByType text/html "access plus 30 minutes"</div><div class="line">ExpiresByType text/css  "access plus 30 minutes"</div><div class="line">ExpiresByType text/txt  "access plus 30 minutes"</div><div class="line">ExpiresByType text/js   "access plus 30 minutes"</div><div class="line">ExpiresByType application/x-javascript   "access plus 30 minutes"</div><div class="line">ExpiresByType application/x-shockwave-flash     "access plus 30 minutes"</div><div class="line">或者</div><div class="line"><span class="tag">&lt;<span class="name">ifmodule</span> <span class="attr">mod_expires.c</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">filesmatch</span> "\<span class="attr">.</span>(<span class="attr">jpg</span>|<span class="attr">gif</span>|<span class="attr">png</span>|<span class="attr">css</span>|<span class="attr">js</span>)$"&gt;</span></div><div class="line">ExpiresActive on</div><div class="line">ExpiresDefault "access plus 1 year"</div><div class="line"><span class="tag">&lt;/<span class="name">filesmatch</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ifmodule</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>设置expires之后会自动输出会自动输出Cache-Control 的max-age 信息<br><a href="http://httpd.apache.org/docs/2.2/mod/mod_expires.html" target="_blank" rel="external">apache官方文档</a></p>
+<p>###忽略浏览器刷新请求<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">refresh_pattern -i \.gif$ 1440 100% 28800 ignore-reload</div><div class="line">refresh_pattern -i \.jpg$ 1440 100% 28800 ignore-reload</div><div class="line">refresh_pattern -i \.jpeg$ 1440 100% 28800 ignore-reload</div><div class="line">refresh_pattern -i \.png$ 1440 100% 28800 ignore-reload</div><div class="line">refresh_pattern -i \.bmp$ 1440 100% 28800 ignore-reload</div><div class="line">refresh_pattern -i \.htm$ 60 100% 100 ignore-reload</div><div class="line">refresh_pattern -i \.html$ 1440 50% 28800 ignore-reload</div><div class="line">refresh_pattern -i \.xml$ 1440 50% 28800 ignore-reload</div><div class="line">refresh_pattern -i \.txt$ 1440 50% 28800 ignore-reload</div><div class="line">refresh_pattern -i \.css$ 1440 50% 28800 reload-into-ims</div><div class="line">refresh_pattern -i \.js$ 60 50% 100 reload-into-ims</div><div class="line">refresh_pattern . 10 50% 60</div></pre></td></tr></table></figure></p>
+<p>有关Squid中Expires的说明，请参考Squid官方中<a href="http://www.squid-cache.org/Doc/config/refresh_pattern/" target="_blank" rel="external">refresh_pattern介绍</a>。</p>
+<p>###Apache设置Etag<br>在Apache中设置Etag的支持比较简单，只用在含有静态文件的目录中建立一个文件.htaccess, 里面加入：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FileETag MTime Size</div></pre></td></tr></table></figure></p>
+<p>这样就行了，详细的可以参考Apache的<a href="http://httpd.apache.org/docs/2.2/mod/core.html#fileetag" target="_blank" rel="external">FileEtag文档页</a></p>
+<h2 id="nginx配置浏览器缓存"><a href="#nginx配置浏览器缓存" class="headerlink" title="nginx配置浏览器缓存"></a>nginx配置浏览器缓存</h2><p>默认情况下,nginx对静态资源输出last-modified</p>
+<h3 id="配置expires"><a href="#配置expires" class="headerlink" title="配置expires"></a>配置expires</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">location~ \.(gif|<span class="type">jpg</span>|<span class="type">jpeg</span>|<span class="type">png</span>|<span class="type">bmp</span>|<span class="type">ico</span>)$ &#123;</div><div class="line">           expires <span class="number">30</span>d;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<p>详细介绍请参考<a href="http://www.nginx.cn/doc/standard/httpheaders.html" target="_blank" rel="external">nginx httpheaders模块</a></p>
+<h3 id="配置etag"><a href="#配置etag" class="headerlink" title="配置etag"></a>配置etag</h3><p>Nginx中默认没有添加对Etag标识.但是可以通过第三方<a href="https://github.com/mikewest/nginx-static-etags" target="_blank" rel="external">nginx- static-etags模块</a>添加.</p>
+<h2 id="tomcat配置浏览器缓存"><a href="#tomcat配置浏览器缓存" class="headerlink" title="tomcat配置浏览器缓存"></a>tomcat配置浏览器缓存</h2><h3 id="配置expires-1"><a href="#配置expires-1" class="headerlink" title="配置expires"></a>配置expires</h3><p>使用tomcat的ExpiresFilter,ExpiresFilter是Apache mod_expires的Java Servlet API端口。此过滤器控制ExpiresHTTP头的设置和服务器响应中HTTP头的 max-age指令Cache-Control。 到期日期可以设置为相对于源文件上次修改的时间，或客户端访问时间。<br>在tomcat的web.xml中添加配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>ExpiresFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.apache.catalina.filters.ExpiresFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>ExpiresByType image<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>access plus 10 minutes<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>ExpiresByType text/css<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>access plus 10 minutes<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>ExpiresByType application/javascript<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>access plus 10 minutes<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></div><div class="line">...</div><div class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>ExpiresFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">dispatcher</span>&gt;</span>REQUEST<span class="tag">&lt;/<span class="name">dispatcher</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></div><div class="line">或者</div><div class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>ExpiresDefault<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>access plus 1 month<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>ExpiresDefault<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>access plus 4 weeks<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>ExpiresDefault<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>access plus 30 days<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>详细参考资料请参考tomcat的<a href="http://tomcat.apache.org/tomcat-7.0-doc/config/filter.html#Expires_Filter" target="_blank" rel="external">Expires_Filter文档</a></p>
+<h3 id="配置Etag"><a href="#配置Etag" class="headerlink" title="配置Etag"></a>配置Etag</h3><p>在tomcat的配置文件context.xml中加入配置如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">context</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Resources</span> <span class="attr">className</span>=<span class="string">"cn.fullstacks.tomcat.ETagFileDirContext"</span> /&gt;</span></div><div class="line">...</div><div class="line"><span class="tag">&lt;/<span class="name">context</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>以上是对于浏览器缓存自己整理的一些资料,希望能帮助到大家如果有什么不对的地方欢迎指出.</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>你要是觉得好的话，可以点一下哦！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/QRCode.jpg" alt="Call me Bay Sir WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/01/使用vue-cli工具构建的vue-webpack项目配置详解/" rel="next" title="使用vue-cli工具构建的vue+webpack项目配置详解">
+                <i class="fa fa-chevron-left"></i> 使用vue-cli工具构建的vue+webpack项目配置详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/SC04C08.jpg"
+               alt="Call me Bay Sir" />
+          <p class="site-author-name" itemprop="name">Call me Bay Sir</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/CrazyBay" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/bu-hui-si-kao-de-baymin/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://webcaiqingchong.github.io/" title="菜青虫" target="_blank">菜青虫</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://cn.vuejs.org/" title="vuejs" target="_blank">vuejs</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/lvdabao/" title="豹哥" target="_blank">豹哥</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器header中的属性"><span class="nav-number">1.</span> <span class="nav-text">浏览器header中的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Expires和Cache-Control-max-age标头"><span class="nav-number">1.1.</span> <span class="nav-text">Expires和Cache-Control: max-age标头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Last-Modifed和ETag标头"><span class="nav-number">1.2.</span> <span class="nav-text">Last-Modifed和ETag标头</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器缓存是否由前端控制"><span class="nav-number">2.</span> <span class="nav-text">浏览器缓存是否由前端控制?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#该如何去控制浏览器缓存"><span class="nav-number">3.</span> <span class="nav-text">该如何去控制浏览器缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#apache配置浏览器缓存"><span class="nav-number">3.1.</span> <span class="nav-text">apache配置浏览器缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx配置浏览器缓存"><span class="nav-number">3.2.</span> <span class="nav-text">nginx配置浏览器缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置expires"><span class="nav-number">3.2.1.</span> <span class="nav-text">配置expires</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置etag"><span class="nav-number">3.2.2.</span> <span class="nav-text">配置etag</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat配置浏览器缓存"><span class="nav-number">3.3.</span> <span class="nav-text">tomcat配置浏览器缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置expires-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">配置expires</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Etag"><span class="nav-number">3.3.2.</span> <span class="nav-text">配置Etag</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-television"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Call me Bay Sir</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("VTXezgFNwS1iXKBIRAAgsPG0-gzGzoHsz", "qpCsPCIfLqhV7L2HE6CyBpNX");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

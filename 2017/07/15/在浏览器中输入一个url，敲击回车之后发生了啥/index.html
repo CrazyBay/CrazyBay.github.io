@@ -102,8 +102,9 @@
 <meta property="og:url" content="https://crazybay.github.io/2017/07/15/在浏览器中输入一个url，敲击回车之后发生了啥/index.html">
 <meta property="og:site_name" content="小白的boom">
 <meta property="og:description" content="这个问题算是一个比较常见的面试问题，自己在技术群里看到这个问题之后简单的了解了一下，但回过头来看看这个问题，发现当时真是简单的了解了一下，啥都没记得，所以又重新捡起来说道说道。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://crazybay.github.io/images/browserRender.jpg">
-<meta property="og:updated_time" content="2017-07-18T05:35:20.655Z">
+<meta property="og:updated_time" content="2017-07-18T05:35:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在浏览器中输入一个url，敲击回车之后发生了啥">
 <meta name="twitter:description" content="这个问题算是一个比较常见的面试问题，自己在技术群里看到这个问题之后简单的了解了一下，但回过头来看看这个问题，发现当时真是简单的了解了一下，啥都没记得，所以又重新捡起来说道说道。">
@@ -406,14 +407,14 @@
 <li>ISP DNS缓存：下一步就会去查ISP的DNS缓存。ISP(Internet Service Provider),互联网服务提供商。</li>
 <li>递归搜索：到达ISP这一步之后还找不到就会执行递归搜索，从根域名服务器查到顶级域名服务器，再到目标服务器，直到找到IP地址。<br>走到这里基本已经拿到IP地址了，不过走了这么多过程，DNS查询肯定会有瓶颈，这里就不展开讨论了，有兴趣的可以自行baidu或google。</li>
 </ul>
-<h1 id="浏览器向目标服务器发送HTTP请求"><a href="#浏览器向目标服务器发送HTTP请求" class="headerlink" title="浏览器向目标服务器发送HTTP请求"></a>浏览器向目标服务器发送HTTP请求</h1><p>GET请求命名包括：URL，浏览器自身的User-Agent header，并说明他接受那种类型的响应（Accept and Accept-Encoding headers）,这个连接头会告知服务器要保持TCP连接（<a href="https://baike.baidu.com/item/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/5111559?fr=aladdin" target="_blank" rel="external">三次握手</a>）以开放下一步请求，该请求会包含浏览器在这个域下的cookie信息。</p>
+<h1 id="浏览器向目标服务器发送HTTP请求"><a href="#浏览器向目标服务器发送HTTP请求" class="headerlink" title="浏览器向目标服务器发送HTTP请求"></a>浏览器向目标服务器发送HTTP请求</h1><p>GET请求命名包括：URL，浏览器自身的User-Agent header，并说明他接受那种类型的响应（Accept and Accept-Encoding headers）,这个连接头会告知服务器要保持TCP连接（<a href="https://baike.baidu.com/item/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B/5111559?fr=aladdin" target="_blank" rel="noopener">三次握手</a>）以开放下一步请求，该请求会包含浏览器在这个域下的cookie信息。</p>
 <h1 id="请求和传输数据"><a href="#请求和传输数据" class="headerlink" title="请求和传输数据"></a>请求和传输数据</h1><p>服务器收到请求之后就会通过TCP协议给浏览器传回一个HTML的文件。服务器的返回会根据浏览器的一些参数而返回不同的结果，通常情况下会是200（正常返回）和301（永久重定向）。</p>
 <h1 id="浏览器开始渲染"><a href="#浏览器开始渲染" class="headerlink" title="浏览器开始渲染"></a>浏览器开始渲染</h1><p>浏览器在接收到html的返回之后（而不是全部接收完）就开始渲染html，当浏览器渲染开始之后就会根据页面上定义的一些标签去加载一些js，css，图片等静态资源。然后根据加载的资源去进行下一步的浏览器渲染工作。</p>
 <h1 id="补充-浏览器渲染流程"><a href="#补充-浏览器渲染流程" class="headerlink" title="[补充]浏览器渲染流程"></a>[补充]浏览器渲染流程</h1><p><img src="/images/browserRender.jpg" alt="浏览器渲染流程"></p>
 <blockquote>
-<p>图片引用：<a href="http://www.cnblogs.com/lvdabao/" target="_blank" rel="external">豹哥</a></p>
+<p>图片引用：<a href="http://www.cnblogs.com/lvdabao/" target="_blank" rel="noopener">豹哥</a></p>
 </blockquote>
-<p>这张图介绍的还是很不错的。<br>最后放上一个链接，是对这个问题很好很全（niu）面（bi）的解释。涉及到了这个过程中的一些计算机硬件的知识以及网络的分层协议。<br><div class="note info"><p><a href="http://fex.baidu.com/blog/2014/05/what-happen/" target="_blank" rel="external">从输入 URL 到页面加载完成的过程中都发生了什么事情？</a> </p>
+<p>这张图介绍的还是很不错的。<br>最后放上一个链接，是对这个问题很好很全（niu）面（bi）的解释。涉及到了这个过程中的一些计算机硬件的知识以及网络的分层协议。<br><div class="note info"><p><a href="http://fex.baidu.com/blog/2014/05/what-happen/" target="_blank" rel="noopener">从输入 URL 到页面加载完成的过程中都发生了什么事情？</a> </p>
 </div></p>
 
       
@@ -713,7 +714,7 @@
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-television"></i>
   </span>

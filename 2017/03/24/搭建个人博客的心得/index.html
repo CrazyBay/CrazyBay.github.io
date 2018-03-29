@@ -102,7 +102,8 @@
 <meta property="og:url" content="https://crazybay.github.io/2017/03/24/搭建个人博客的心得/index.html">
 <meta property="og:site_name" content="小白的boom">
 <meta property="og:description" content="上学那会，自己不怎么爱记笔记，也没觉得记笔记有啥好的，大学期间更别提了，笔记少之又少，突然意识到自己该记点笔记是从刚工作实习那会开始，技术渣渣就不说了，但是还是要有一颗向上的心，于是实习期间就读书学习，但是学完之后总觉得自己没学多少东西，才感觉到记笔记的重要性了。不过使用云笔记之类的东西吧，自己又不太习惯，所以零零散散的记了一些东西。总得来说，记录不多。搭建这个博客是想记录一下自己的工作和生活中的">
-<meta property="og:updated_time" content="2017-07-19T06:49:32.900Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-19T06:49:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建个人博客的心得">
 <meta name="twitter:description" content="上学那会，自己不怎么爱记笔记，也没觉得记笔记有啥好的，大学期间更别提了，笔记少之又少，突然意识到自己该记点笔记是从刚工作实习那会开始，技术渣渣就不说了，但是还是要有一颗向上的心，于是实习期间就读书学习，但是学完之后总觉得自己没学多少东西，才感觉到记笔记的重要性了。不过使用云笔记之类的东西吧，自己又不太习惯，所以零零散散的记了一些东西。总得来说，记录不多。搭建这个博客是想记录一下自己的工作和生活中的">
@@ -394,9 +395,9 @@
       
 
       
-        <p>上学那会，自己不怎么爱记笔记，也没觉得记笔记有啥好的，大学期间更别提了，笔记少之又少，突然意识到自己该记点笔记是从刚工作实习那会开始，技术渣渣就不说了，但是还是要有一颗向上的心，于是实习期间就读书学习，但是学完之后总觉得自己没学多少东西，才感觉到记笔记的重要性了。不过使用云笔记之类的东西吧，自己又不太习惯，所以零零散散的记了一些东西。总得来说，记录不多。搭建这个博客是想记录一下自己的工作和生活中的成长，希望自己养成记录的习惯。<br>之前搭建过一个博客，不过由于换了电脑之后之前搭建博客的源码都丢掉了，真是血淋淋的教训啊，然后在现在工作电脑上gitlab和github的置总是出现问题，周末捣鼓了一天也看了一些解决方案提交还是报错，偶然在一篇博客中看到可以用http的方式进行提交，最终选择博客使用的是http方式。这里先记录一下解决方法：<br><a id="more"></a><br>在项目目录下运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p>插件安装好之后去修改项目目录下的_config.yml文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repository: https://github.com/username/username.CrazyBay.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<p>接下来执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
+        <p>上学那会，自己不怎么爱记笔记，也没觉得记笔记有啥好的，大学期间更别提了，笔记少之又少，突然意识到自己该记点笔记是从刚工作实习那会开始，技术渣渣就不说了，但是还是要有一颗向上的心，于是实习期间就读书学习，但是学完之后总觉得自己没学多少东西，才感觉到记笔记的重要性了。不过使用云笔记之类的东西吧，自己又不太习惯，所以零零散散的记了一些东西。总得来说，记录不多。搭建这个博客是想记录一下自己的工作和生活中的成长，希望自己养成记录的习惯。<br>之前搭建过一个博客，不过由于换了电脑之后之前搭建博客的源码都丢掉了，真是血淋淋的教训啊，然后在现在工作电脑上gitlab和github的置总是出现问题，周末捣鼓了一天也看了一些解决方案提交还是报错，偶然在一篇博客中看到可以用http的方式进行提交，最终选择博客使用的是http方式。这里先记录一下解决方法：<br><a id="more"></a><br>在项目目录下运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>插件安装好之后去修改项目目录下的_config.yml文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: https://github.com/username/username.CrazyBay.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>接下来执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
 <p>第一次需要输入github的用户名和密码，稍待一会就会看到：<code>Deploy done: git</code>，至此你就可以愉快的访问自己的github个人博客了。</p>
 
       
@@ -671,7 +672,7 @@
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-television"></i>
   </span>
